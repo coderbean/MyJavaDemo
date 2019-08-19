@@ -19,7 +19,7 @@ public class Main2 {
             Semaphore nextSemaphore = i == semaphores.length - 1 ? semaphores[0] : semaphores[i + 1];
             threads[i] = new Thread(() -> {
                 try {
-                    for (;;) {
+                    for (; ; ) {
                         semaphore.acquire();
                         System.out.println(Thread.currentThread().getName());
                         nextSemaphore.release();
@@ -28,7 +28,7 @@ public class Main2 {
                     e.printStackTrace();
                 }
             });
-            threads[i].setName(((char) ('A' + i)) + "");
+            threads[i].setName(((char) ('A' + i)) + "-" + i);
             threads[i].start();
         }
     }
